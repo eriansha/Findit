@@ -32,6 +32,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C1E51AA2A18ACBF0063F950 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				2CC8900B2A18ABBB003A3C12 /* FinditApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		2C1E51AB2A18ACC90063F950 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		2C1E51AC2A18ACD10063F950 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				2C1E51AE2A18AD1A0063F950 /* Models */,
+				2C1E51AF2A18AD290063F950 /* ViewModels */,
+				2C1E51AD2A18AD0F0063F950 /* Presenters */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		2C1E51AD2A18AD0F0063F950 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				2C1E51B02A18AD400063F950 /* Views */,
+				2C1E51B12A18AD450063F950 /* Components */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		2C1E51AE2A18AD1A0063F950 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2C1E51AF2A18AD290063F950 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		2C1E51B02A18AD400063F950 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2CC8900D2A18ABBB003A3C12 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2C1E51B12A18AD450063F950 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		2CC88FFF2A18ABBB003A3C12 = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +114,9 @@
 		2CC8900A2A18ABBB003A3C12 /* Findit */ = {
 			isa = PBXGroup;
 			children = (
-				2CC8900B2A18ABBB003A3C12 /* FinditApp.swift */,
-				2CC8900D2A18ABBB003A3C12 /* ContentView.swift */,
+				2C1E51AA2A18ACBF0063F950 /* Application */,
+				2C1E51AB2A18ACC90063F950 /* Core */,
+				2C1E51AC2A18ACD10063F950 /* Features */,
 				2CC8900F2A18ABBC003A3C12 /* Assets.xcassets */,
 				2CC890112A18ABBC003A3C12 /* Preview Content */,
 			);

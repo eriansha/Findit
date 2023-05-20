@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2C1E51B32A18ADEA0063F950 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1E51B22A18ADEA0063F950 /* Item.swift */; };
+		2C1E51B52A18AE860063F950 /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1E51B42A18AE860063F950 /* ItemCard.swift */; };
+		2C1E51B82A18AFF00063F950 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1E51B72A18AFF00063F950 /* Theme.swift */; };
 		2CC8900C2A18ABBB003A3C12 /* FinditApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC8900B2A18ABBB003A3C12 /* FinditApp.swift */; };
 		2CC8900E2A18ABBB003A3C12 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC8900D2A18ABBB003A3C12 /* ContentView.swift */; };
 		2CC890102A18ABBC003A3C12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC8900F2A18ABBC003A3C12 /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 
 /* Begin PBXFileReference section */
 		2C1E51B22A18ADEA0063F950 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		2C1E51B42A18AE860063F950 /* ItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCard.swift; sourceTree = "<group>"; };
+		2C1E51B72A18AFF00063F950 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		2CC890082A18ABBB003A3C12 /* Findit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Findit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC8900B2A18ABBB003A3C12 /* FinditApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinditApp.swift; sourceTree = "<group>"; };
 		2CC8900D2A18ABBB003A3C12 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +49,7 @@
 		2C1E51AB2A18ACC90063F950 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				2C1E51B62A18AFDE0063F950 /* Constant */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -94,8 +99,17 @@
 		2C1E51B12A18AD450063F950 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2C1E51B42A18AE860063F950 /* ItemCard.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		2C1E51B62A18AFDE0063F950 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				2C1E51B72A18AFF00063F950 /* Theme.swift */,
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 		2CC88FFF2A18ABBB003A3C12 = {
@@ -206,7 +220,9 @@
 			files = (
 				2CC8900E2A18ABBB003A3C12 /* ContentView.swift in Sources */,
 				2C1E51B32A18ADEA0063F950 /* Item.swift in Sources */,
+				2C1E51B52A18AE860063F950 /* ItemCard.swift in Sources */,
 				2CC8900C2A18ABBB003A3C12 /* FinditApp.swift in Sources */,
+				2C1E51B82A18AFF00063F950 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

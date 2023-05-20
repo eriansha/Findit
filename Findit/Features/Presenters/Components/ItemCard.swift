@@ -18,7 +18,7 @@ struct ItemCard: View {
             
             VStack {
                 Text(item.logo)
-                    .font(Theme.FontSize.xlarge)
+                    .font(Theme.FontSize.xxlarge)
                 Text(item.name)
             }
         }

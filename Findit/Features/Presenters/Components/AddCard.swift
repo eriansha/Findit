@@ -8,19 +8,28 @@
 import SwiftUI
 
 struct AddCard: View {
+    @State private var showSheet: Bool = false
+    
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
-                .fill(Theme.Colors.gray500)
-                .frame(width: 171, height: 171)
-            
-            VStack {
-                Image(systemName: "plus.circle.fill")
-                    .font(Theme.FontSize.xlarage)
-                    .foregroundColor(.blue)
+        Button {
+            showSheet.toggle()
+        } label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
+                    .fill(Theme.Colors.gray500)
+                    .frame(width: 171, height: 171)
                 
-                Text("Add Item")
+                VStack {
+                    Image(systemName: "plus.circle.fill")
+                        .font(Theme.FontSize.xlarage)
+                        .foregroundColor(.blue)
+                    
+                    Text("Add Item")
+                        .foregroundColor(.black)
+                }
             }
+        }.sheet(isPresented: $showSheet) {
+            Text("This is sheet")
         }
     }
 }

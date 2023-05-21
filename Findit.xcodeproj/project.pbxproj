@@ -59,7 +59,6 @@
 		2C1E51AB2A18ACC90063F950 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				2C47C5B52A1A03A700515F73 /* Utilizer */,
 				2C1E51B62A18AFDE0063F950 /* Constant */,
 			);
 			path = Core;
@@ -126,13 +125,6 @@
 				2C1E51B72A18AFF00063F950 /* Theme.swift */,
 			);
 			path = Constant;
-			sourceTree = "<group>";
-		};
-		2C47C5B52A1A03A700515F73 /* Utilizer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utilizer;
 			sourceTree = "<group>";
 		};
 		2CC88FFF2A18ABBB003A3C12 = {

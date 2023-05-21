@@ -9,9 +9,12 @@ import Foundation
 import CoreLocation
 
 class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
+    // The accuracy of the proximity value, measured in meters from the beacon.
     @Published var lastDistance: CLLocationAccuracy = 0
+    // Constants that reflect the relative distance to a beacon.
     @Published var lastProximity: CLProximity = CLProximity.unknown
     
+    // central place to manage your app’s location-related behaviors.
     var locationManager: CLLocationManager?
     
     // hardcoded UUID for debug purpose
@@ -87,6 +90,10 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
         start scanning and configure a Beacon
      */
     func startScanning() {
+        /**
+            A constraint specifies beacon identity characteristics.
+            Before detecting Beacon, we must specify identities values that programmed in the beacon hardware (e.g proximity UUID, major, minor)
+         */
         let uuid = UUID(uuidString: beaconUUID)!
         let constraint = CLBeaconIdentityConstraint(
             uuid: uuid,
@@ -96,10 +103,9 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
         beaconConstraint = constraint
         let beaconRegion = CLBeaconRegion(beaconIdentityConstraint: constraint, identifier: uuid.uuidString)
         
-        /**
-         start looking at the beacon and start telling us how far away it s
-         */
+        // To detect when a beacon is in range
         locationManager?.startMonitoring(for: beaconRegion)
+        // To determine the relative distance to the beacon
         locationManager?.startRangingBeacons(satisfying: constraint )
     }
     

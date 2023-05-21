@@ -18,6 +18,7 @@ extension Theme {
 
 extension Theme {
     struct FontSize {
+        static let large = Font.system(size: 56)
         static let xlarage = Font.system(size: 72)
         static let xxlarge = Font.system(size: 96)
     }

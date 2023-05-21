@@ -6,12 +6,27 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct DetectionView: View {
+    @StateObject var beaconDetector = BeaconDetector()
     public var item: Item
     
+    func distanceInString(_ distance: CLProximity) -> String {
+        switch distance {
+        case .near: return "Near"
+        case .far: return "Far"
+        case .immediate: return "Immediate"
+        default: return "Unknown"
+        }
+    }
+    
     var body: some View {
-        Text("Detect \(item.name)")
+        VStack {
+            Text("Detect \(item.name)")
+            Text(distanceInString(beaconDetector.lastProximity))
+            Text("\(beaconDetector.lastDistance) m")
+        }
     }
 }
 

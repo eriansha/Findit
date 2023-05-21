@@ -14,6 +14,7 @@
 		2C1E51BC2A18B3CB0063F950 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1E51BB2A18B3CB0063F950 /* HomeView.swift */; };
 		2C40246E2A18D462005153B1 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40246D2A18D462005153B1 /* InputField.swift */; };
 		2C4024702A18E611005153B1 /* DetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40246F2A18E611005153B1 /* DetectionView.swift */; };
+		2C47C5B42A19F53F00515F73 /* BeaconDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C47C5B32A19F53F00515F73 /* BeaconDetector.swift */; };
 		2CC8900C2A18ABBB003A3C12 /* FinditApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC8900B2A18ABBB003A3C12 /* FinditApp.swift */; };
 		2CC8900E2A18ABBB003A3C12 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC8900D2A18ABBB003A3C12 /* ContentView.swift */; };
 		2CC890102A18ABBC003A3C12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC8900F2A18ABBC003A3C12 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		2C1E51BB2A18B3CB0063F950 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		2C40246D2A18D462005153B1 /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		2C40246F2A18E611005153B1 /* DetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionView.swift; sourceTree = "<group>"; };
+		2C47C5B32A19F53F00515F73 /* BeaconDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconDetector.swift; sourceTree = "<group>"; };
 		2CC890082A18ABBB003A3C12 /* Findit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Findit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC8900B2A18ABBB003A3C12 /* FinditApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinditApp.swift; sourceTree = "<group>"; };
 		2CC8900D2A18ABBB003A3C12 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 		2C1E51AB2A18ACC90063F950 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				2C47C5B52A1A03A700515F73 /* Utilizer */,
 				2C1E51B62A18AFDE0063F950 /* Constant */,
 			);
 			path = Core;
@@ -92,6 +95,7 @@
 		2C1E51AF2A18AD290063F950 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				2C47C5B32A19F53F00515F73 /* BeaconDetector.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -122,6 +126,13 @@
 				2C1E51B72A18AFF00063F950 /* Theme.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		2C47C5B52A1A03A700515F73 /* Utilizer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilizer;
 			sourceTree = "<group>";
 		};
 		2CC88FFF2A18ABBB003A3C12 = {
@@ -235,6 +246,7 @@
 				2C4024702A18E611005153B1 /* DetectionView.swift in Sources */,
 				2C1E51BA2A18B2770063F950 /* AddCard.swift in Sources */,
 				2C1E51B32A18ADEA0063F950 /* Item.swift in Sources */,
+				2C47C5B42A19F53F00515F73 /* BeaconDetector.swift in Sources */,
 				2C1E51B52A18AE860063F950 /* ItemCard.swift in Sources */,
 				2CC8900C2A18ABBB003A3C12 /* FinditApp.swift in Sources */,
 				2C1E51B82A18AFF00063F950 /* Theme.swift in Sources */,
@@ -370,6 +382,7 @@
 				DEVELOPMENT_TEAM = 63Z24W5HZV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We want to scan beacon";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -399,6 +412,7 @@
 				DEVELOPMENT_TEAM = 63Z24W5HZV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We want to scan beacon";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -13,23 +13,39 @@ struct InputField: View {
     
     @State private var isTextFieldFocused: Bool = false
     
+    func resetField() {
+        value = ""
+    }
+    
     var borderColor: Color {
         isTextFieldFocused ? .blue : .gray
     }
     
     var body: some View {
         VStack {
-            VStack(alignment: .leading) {
-                Text(label)
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                    .padding(.bottom, -8)
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(label)
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .padding(.bottom, -8)
+                    
+                    TextField("", text: $value)
+                        .onTapGesture {
+                            isTextFieldFocused = true
+                        }
+                }
                 
-                TextField("", text: $value)
-                    .onTapGesture {
-                       isTextFieldFocused = true
-                   }
-            }.padding(8)
+                Spacer()
+                
+                if !value.isEmpty {
+                    Button(action: resetField) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
+            .padding(8)
         }
         .padding(4)
         .cornerRadius(8.0)

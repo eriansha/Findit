@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InputField: View {
     public var label = "Name"
-    @State public var value = "Bag"
+    @Binding var value: String
     
     @State private var isTextFieldFocused: Bool = false
     
@@ -45,7 +45,7 @@ struct InputField_Previews: PreviewProvider {
     static var previews: some View {
         InputField(
             label: "Name",
-            value: "Bag"
+            value: .constant("Bag")
         )
     }
 }

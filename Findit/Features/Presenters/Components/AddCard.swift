@@ -29,7 +29,8 @@ struct AddCard: View {
                 }
             }
         }.sheet(isPresented: $showSheet) {
-            Text("This is sheet")
+            AddItemForm()
+                .padding(.vertical, 16)
         }
     }
 }

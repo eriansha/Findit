@@ -12,6 +12,10 @@
 		2C1E51B82A18AFF00063F950 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1E51B72A18AFF00063F950 /* Theme.swift */; };
 		2C1E51BA2A18B2770063F950 /* AddCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1E51B92A18B2770063F950 /* AddCard.swift */; };
 		2C1E51BC2A18B3CB0063F950 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1E51BB2A18B3CB0063F950 /* HomeView.swift */; };
+		2C35F08D2A1B058100B752DD /* MCEmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 2C35F08C2A1B058100B752DD /* MCEmojiPicker */; };
+		2C35F08F2A1B079700B752DD /* UIEmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35F08E2A1B079700B752DD /* UIEmojiTextField.swift */; };
+		2C35F0912A1B07CC00B752DD /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35F0902A1B07CC00B752DD /* EmojiTextField.swift */; };
+		2C35F0932A1B125300B752DD /* EmojiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35F0922A1B125300B752DD /* EmojiPicker.swift */; };
 		2C40246E2A18D462005153B1 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40246D2A18D462005153B1 /* InputField.swift */; };
 		2C4024702A18E611005153B1 /* DetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40246F2A18E611005153B1 /* DetectionView.swift */; };
 		2C47C5B42A19F53F00515F73 /* BeaconDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C47C5B32A19F53F00515F73 /* BeaconDetector.swift */; };
@@ -19,6 +23,7 @@
 		2CC8900E2A18ABBB003A3C12 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC8900D2A18ABBB003A3C12 /* ContentView.swift */; };
 		2CC890102A18ABBC003A3C12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC8900F2A18ABBC003A3C12 /* Assets.xcassets */; };
 		2CC890132A18ABBC003A3C12 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC890122A18ABBC003A3C12 /* Preview Assets.xcassets */; };
+		2CDDDE212A1AFEFB00E04B04 /* AddItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDDDE202A1AFEFB00E04B04 /* AddItemForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +32,9 @@
 		2C1E51B72A18AFF00063F950 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		2C1E51B92A18B2770063F950 /* AddCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCard.swift; sourceTree = "<group>"; };
 		2C1E51BB2A18B3CB0063F950 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		2C35F08E2A1B079700B752DD /* UIEmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmojiTextField.swift; sourceTree = "<group>"; };
+		2C35F0902A1B07CC00B752DD /* EmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
+		2C35F0922A1B125300B752DD /* EmojiPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPicker.swift; sourceTree = "<group>"; };
 		2C40246D2A18D462005153B1 /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		2C40246F2A18E611005153B1 /* DetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionView.swift; sourceTree = "<group>"; };
 		2C47C5B32A19F53F00515F73 /* BeaconDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconDetector.swift; sourceTree = "<group>"; };
@@ -35,6 +43,7 @@
 		2CC8900D2A18ABBB003A3C12 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2CC8900F2A18ABBC003A3C12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CC890122A18ABBC003A3C12 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2CDDDE202A1AFEFB00E04B04 /* AddItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C35F08D2A1B058100B752DD /* MCEmojiPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +125,10 @@
 				2C1E51B42A18AE860063F950 /* ItemCard.swift */,
 				2C1E51B92A18B2770063F950 /* AddCard.swift */,
 				2C40246D2A18D462005153B1 /* InputField.swift */,
+				2CDDDE202A1AFEFB00E04B04 /* AddItemForm.swift */,
+				2C35F08E2A1B079700B752DD /* UIEmojiTextField.swift */,
+				2C35F0902A1B07CC00B752DD /* EmojiTextField.swift */,
+				2C35F0922A1B125300B752DD /* EmojiPicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -179,6 +193,9 @@
 			dependencies = (
 			);
 			name = Findit;
+			packageProductDependencies = (
+				2C35F08C2A1B058100B752DD /* MCEmojiPicker */,
+			);
 			productName = Findit;
 			productReference = 2CC890082A18ABBB003A3C12 /* Findit.app */;
 			productType = "com.apple.product-type.application";
@@ -207,6 +224,9 @@
 				Base,
 			);
 			mainGroup = 2CC88FFF2A18ABBB003A3C12;
+			packageReferences = (
+				2C35F08B2A1B058100B752DD /* XCRemoteSwiftPackageReference "MCEmojiPicker" */,
+			);
 			productRefGroup = 2CC890092A18ABBB003A3C12 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -234,8 +254,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CC8900E2A18ABBB003A3C12 /* ContentView.swift in Sources */,
+				2C35F0912A1B07CC00B752DD /* EmojiTextField.swift in Sources */,
 				2C1E51BC2A18B3CB0063F950 /* HomeView.swift in Sources */,
+				2CDDDE212A1AFEFB00E04B04 /* AddItemForm.swift in Sources */,
 				2C4024702A18E611005153B1 /* DetectionView.swift in Sources */,
+				2C35F08F2A1B079700B752DD /* UIEmojiTextField.swift in Sources */,
+				2C35F0932A1B125300B752DD /* EmojiPicker.swift in Sources */,
 				2C1E51BA2A18B2770063F950 /* AddCard.swift in Sources */,
 				2C1E51B32A18ADEA0063F950 /* Item.swift in Sources */,
 				2C47C5B42A19F53F00515F73 /* BeaconDetector.swift in Sources */,
@@ -445,6 +469,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2C35F08B2A1B058100B752DD /* XCRemoteSwiftPackageReference "MCEmojiPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/izyumkin/MCEmojiPicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2C35F08C2A1B058100B752DD /* MCEmojiPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C35F08B2A1B058100B752DD /* XCRemoteSwiftPackageReference "MCEmojiPicker" */;
+			productName = MCEmojiPicker;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2CC890002A18ABBB003A3C12 /* Project object */;
 }

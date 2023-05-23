@@ -29,7 +29,11 @@ struct DetectionView: View {
     }
     
     func formatDistance(_ value: Double) -> String {
-        return String(format: "%.1f", value)
+        if value > 0 {
+            return "\(String(format: "%.1f", value)) m"
+        } else {
+            return "-"
+        }
     }
     
     var body: some View {
@@ -78,7 +82,7 @@ struct DetectionView: View {
                     .font(.largeTitle)
                     .bold()
                 
-                Text("\(formatDistance(beaconDetector.lastDistance)) m")
+                Text(formatDistance(beaconDetector.lastDistance))
                     .font(.title)
                 
                 Spacer()

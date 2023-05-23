@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EmojiPicker: View {
     @Binding public var emoji: String
+    @Binding public var isPresented: Bool
     
     var emojiSequences = [
         // 0x1F601...0x1F64F,
@@ -23,10 +24,18 @@ struct EmojiPicker: View {
     
     func pickEmoji(_ selectedEmoji: Int) {
         if (UnicodeScalar(selectedEmoji)?.properties.isEmoji)! {
-            emoji = String(UnicodeScalar(emoji)!)
+            if let unicodeScalar = UnicodeScalar(selectedEmoji) {
+                let emojiChar = Character(unicodeScalar)
+                let emojiString = String(emojiChar)
+                emoji = emojiString
+            } else {
+                print("Cannot parse selected emoji Int16 into Unicode")
+            }
         } else {
             emoji = ""
         }
+        
+        isPresented.toggle()
     }
     
     func getEmojiList() -> [[Int]] {
@@ -78,6 +87,9 @@ struct EmojiPicker: View {
 
 struct EmojiPicker_Previews: PreviewProvider {
     static var previews: some View {
-        EmojiPicker(emoji: .constant("🎒"))
+        EmojiPicker(
+            emoji: .constant("🎒"),
+            isPresented: .constant(true)
+        )
     }
 }

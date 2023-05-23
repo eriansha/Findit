@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct EmojiSheet: View {
-    @Binding var logo: String
+    @Binding var emoji: String
+    @Binding var isPresented: Bool
     
     var body: some View {
-        EmojiPicker(emoji: $logo)
+        EmojiPicker(emoji: $emoji, isPresented: $isPresented)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding()
             .edgesIgnoringSafeArea(.bottom)
@@ -21,12 +22,19 @@ struct EmojiSheet: View {
 struct AddItemForm: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
+    @Binding public var showSheet: Bool
+    
     @State private var isPresented: Bool = false
     @State private var itemLogo: String = ""
     @State private var itemName: String = ""
     @State private var beaconUUIDString: String = ""
     @State private var beaconMajor: String = ""
     @State private var beaconMinor: String = ""
+    
+    @State private var errorName: String
+    @State private var errorBeaconUUIDString: String
+    @State private var errorBeaconMajor: String
+    @State private var errorBeaconMinor: String
     
     func addItem() {
         let parsedBeaconMajor = Int16(beaconMajor) ?? 0
@@ -40,6 +48,9 @@ struct AddItemForm: View {
             beaconMinor: parsedBeaconMinor,
             context: managedObjectContext
         )
+        
+        // close the sheet once the item has been added
+        showSheet.toggle()
     }
     
     var body: some View {
@@ -63,16 +74,24 @@ struct AddItemForm: View {
                         isPresented.toggle()
                     } label: {
                         VStack {
-                            Image(systemName: "face.dashed")
-                                .foregroundColor(.gray)
-                                .font(Theme.FontSize.large)
-                                .padding(.bottom, 1)
-                            Text("Select Emoji")
-                                .font(.caption)
-                                .foregroundColor(.gray)
+                            if itemLogo.isEmpty {
+                                Image(systemName: "face.dashed")
+                                    .foregroundColor(.gray)
+                                    .font(Theme.FontSize.large)
+                                    .padding(.bottom, 1)
+                                Text("Select Emoji")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                            } else {
+                                Text(itemLogo)
+                                    .font(Theme.FontSize.xlarage)
+                            }
                         }
                     }.sheet(isPresented: $isPresented) {
-                        EmojiSheet(logo: $itemLogo)
+                        EmojiSheet(
+                            emoji: $itemLogo,
+                            isPresented: $isPresented
+                        )
                             .presentationDetents([.height(400), .medium, .large])
                             .presentationDragIndicator(.automatic)
                             .padding(.top, 32)
@@ -109,6 +128,6 @@ struct AddItemForm: View {
 
 struct AddItemForm_Previews: PreviewProvider {
     static var previews: some View {
-        AddItemForm()
+        AddItemForm(showSheet: .constant(true))
     }
 }

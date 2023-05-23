@@ -29,7 +29,7 @@ struct AddCard: View {
                 }
             }
         }.sheet(isPresented: $showSheet) {
-            AddItemForm()
+            AddItemForm(showSheet: $showSheet)
         }
     }
 }

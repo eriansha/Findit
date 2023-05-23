@@ -71,21 +71,25 @@ struct AddItemForm: View {
                 InputField(
                     name: ItemCreationName.itemName.rawValue,
                     label: "Name",
+                    placeholder: "Your item name",
                     value: $itemName
                 ).padding(.bottom, 16)
                 InputField(
                     name: ItemCreationName.beaconUUIDString.rawValue,
                     label: "Beacon UUID",
+                    placeholder: "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0",
                     value: $beaconUUIDString
                 ).padding(.bottom, 16)
                 InputField(
                     name: ItemCreationName.beaconMajor.rawValue,
                     label: "Beacon Major",
+                    placeholder: "100",
                     value: $beaconMajor
                 ).keyboardType(.numberPad).padding(.bottom, 16)
                 InputField(
                     name: ItemCreationName.beaconMinor.rawValue,
                     label: "Beacon Minor",
+                    placeholder: "75",
                     value: $beaconMinor
                 ).keyboardType(.numberPad).padding(.bottom, 19)
                 

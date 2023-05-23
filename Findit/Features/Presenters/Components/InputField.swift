@@ -12,6 +12,7 @@ struct InputField: View {
     
     public var name: String = ""
     public var label: String = ""
+    public var placeholder: String = ""
     public var errors: [ErrorField] = []
     @Binding var value: String
     
@@ -36,7 +37,7 @@ struct InputField: View {
                             .foregroundColor(.gray)
                             .padding(.bottom, -8)
                         
-                        TextField("", text: $value, onEditingChanged: { editing in
+                        TextField(placeholder, text: $value, onEditingChanged: { editing in
                             isEditing = editing
                         })
                     }
@@ -78,13 +79,25 @@ struct InputField_Previews: PreviewProvider {
     ]
     
     static var previews: some View {
-        InputField(
-            name: "fieldName",
-            label: "Name",
-            errors: errors,
-            value: .constant("Bag")
+        VStack {
+            InputField(
+                name: "fieldName",
+                label: "Name",
+                placeholder: "Your item name",
+                errors: errors,
+                value: .constant("")
+                
+            )
+            .environmentObject(ErrorData())
             
-        )
-        .environmentObject(ErrorData())
+            InputField(
+                name: "fieldName",
+                label: "Name",
+                errors: errors,
+                value: .constant("Bag")
+                
+            )
+            .environmentObject(ErrorData())
+        }
     }
 }

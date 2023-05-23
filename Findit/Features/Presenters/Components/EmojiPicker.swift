@@ -64,8 +64,6 @@ struct EmojiPicker: View {
             .padding(.top)
         }
         .ignoresSafeArea(.all)
-        .frame(height: 400)
-        .background(Theme.Colors.gray500)
     }
 }
 

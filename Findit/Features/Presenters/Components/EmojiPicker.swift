@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EmojiPicker: View {
+    @Binding public var emoji: String
     
     var emojiSequences = [
         // 0x1F601...0x1F64F,
@@ -19,6 +20,14 @@ struct EmojiPicker: View {
         0x1F699...0x1F69A,
         0x1F6C1...0x1F6D2
     ]
+    
+    func pickEmoji(_ selectedEmoji: Int) {
+        if (UnicodeScalar(selectedEmoji)?.properties.isEmoji)! {
+            emoji = String(UnicodeScalar(emoji)!)
+        } else {
+            emoji = ""
+        }
+    }
     
     func getEmojiList() -> [[Int]] {
         var emojis: [[Int]] = []
@@ -48,7 +57,7 @@ struct EmojiPicker: View {
                     HStack(spacing: 25) {
                         ForEach(row, id: \.self) { emoji in
                             Button(action: {
-                                
+                                pickEmoji(emoji)
                             }) {
                                 if (UnicodeScalar(emoji)?.properties.isEmoji)! {
                                     Text(String(UnicodeScalar(emoji)!))
@@ -69,6 +78,6 @@ struct EmojiPicker: View {
 
 struct EmojiPicker_Previews: PreviewProvider {
     static var previews: some View {
-        EmojiPicker()
+        EmojiPicker(emoji: .constant("🎒"))
     }
 }

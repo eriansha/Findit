@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct EmojiSheet: View {
+    @Binding var logo: String
+    
     var body: some View {
-        EmojiPicker()
+        EmojiPicker(emoji: $logo)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding()
             .edgesIgnoringSafeArea(.bottom)
@@ -17,17 +19,28 @@ struct EmojiSheet: View {
 }
 
 struct AddItemForm: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
     @State private var isPresented: Bool = false
-    @State private var emoji: String = ""
-    @State private var name: String = ""
-    @State private var uuid: String = ""
-    @State private var major: String = ""
-    @State private var minor: String = ""
+    @State private var itemLogo: String = ""
+    @State private var itemName: String = ""
+    @State private var beaconUUIDString: String = ""
+    @State private var beaconMajor: String = ""
+    @State private var beaconMinor: String = ""
     
     func addItem() {
-        // TODO
+        let parsedBeaconMajor = Int16(beaconMajor) ?? 0
+        let parsedBeaconMinor = Int16(beaconMinor) ?? 0
+        
+        FinditController().addItem(
+            name: itemName,
+            logo: itemLogo,
+            beaconUUIDString: beaconUUIDString,
+            beaconMajor: parsedBeaconMajor,
+            beaconMinor: parsedBeaconMinor,
+            context: managedObjectContext
+        )
     }
-    
     
     var body: some View {
         VStack {
@@ -35,6 +48,7 @@ struct AddItemForm: View {
                 Text("Add Item")
                     .bold()
                     .font(.title2)
+                    .padding(.vertical, 16)
                 Spacer()
             }
             .padding()
@@ -58,7 +72,7 @@ struct AddItemForm: View {
                                 .foregroundColor(.gray)
                         }
                     }.sheet(isPresented: $isPresented) {
-                        EmojiSheet()
+                        EmojiSheet(logo: $itemLogo)
                             .presentationDetents([.height(400), .medium, .large])
                             .presentationDragIndicator(.automatic)
                             .padding(.top, 32)
@@ -66,13 +80,15 @@ struct AddItemForm: View {
                 }
                 .padding(.bottom, 19)
                 
-                InputField(label: "Name", value: $name)
+                InputField(label: "Name", value: $itemName)
                     .padding(.bottom, 16)
-                InputField(label: "UUID", value: $uuid)
+                InputField(label: "UUID", value: $beaconUUIDString)
                     .padding(.bottom, 16)
-                InputField(label: "Major", value: $major)
+                InputField(label: "Major", value: $beaconMajor)
+                    .keyboardType(.numberPad)
                     .padding(.bottom, 16)
-                InputField(label: "Minor", value: $minor)
+                InputField(label: "Minor", value: $beaconMinor)
+                    .keyboardType(.numberPad)
                     .padding(.bottom, 19)
                 
                 Button(action: addItem) {

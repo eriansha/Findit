@@ -51,7 +51,7 @@ struct InputField: View {
         .cornerRadius(8.0)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(borderColor, lineWidth: 2)
+                .stroke(borderColor, lineWidth: 1)
         )
         .padding(.horizontal, 8)
     }

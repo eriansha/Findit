@@ -30,7 +30,6 @@ struct AddCard: View {
             }
         }.sheet(isPresented: $showSheet) {
             AddItemForm()
-                .padding(.vertical, 16)
         }
     }
 }

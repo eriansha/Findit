@@ -15,14 +15,15 @@ struct InputField: View {
     public var errors: [ErrorField] = []
     @Binding var value: String
     
-    @State private var isTextFieldFocused: Bool = false
+    @State private var isEditing: Bool = false
     
     func resetField() {
         value = ""
     }
     
+    // changing border of input field if it's in edit mode (user type on the field)
     var borderColor: Color {
-        isTextFieldFocused ? .blue : .gray
+        isEditing ? .blue : .gray
     }
     
     var body: some View {
@@ -35,10 +36,9 @@ struct InputField: View {
                             .foregroundColor(.gray)
                             .padding(.bottom, -8)
                         
-                        TextField("", text: $value)
-                            .onTapGesture {
-                                isTextFieldFocused = true
-                            }
+                        TextField("", text: $value, onEditingChanged: { editing in
+                            isEditing = editing
+                        })
                     }
                     
                     Spacer()

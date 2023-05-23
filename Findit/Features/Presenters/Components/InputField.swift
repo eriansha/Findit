@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct InputField: View {
-    public var label = "Name"
+    @EnvironmentObject var errorData: ErrorData
+    
+    public var name: String = ""
+    public var label: String = ""
+    public var errors: [ErrorField] = []
     @Binding var value: String
     
     @State private var isTextFieldFocused: Bool = false
@@ -23,45 +27,64 @@ struct InputField: View {
     
     var body: some View {
         VStack {
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(label)
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                        .padding(.bottom, -8)
-                    
-                    TextField("", text: $value)
-                        .onTapGesture {
-                            isTextFieldFocused = true
-                        }
-                }
-                
-                Spacer()
-                
-                if !value.isEmpty {
-                    Button(action: resetField) {
-                        Image(systemName: "xmark.circle.fill")
+            VStack {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(label)
+                            .font(.caption)
                             .foregroundColor(.gray)
+                            .padding(.bottom, -8)
+                        
+                        TextField("", text: $value)
+                            .onTapGesture {
+                                isTextFieldFocused = true
+                            }
+                    }
+                    
+                    Spacer()
+                    
+                    if !value.isEmpty {
+                        Button(action: resetField) {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(.gray)
+                        }
                     }
                 }
+                .padding(8)
             }
-            .padding(8)
+            .padding(4)
+            .cornerRadius(8.0)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(borderColor, lineWidth: 1)
+            )
+            
+            if let error = errorData.errorFields.first(where: { $0.key == name })  {
+                HStack {
+                    Text(error.message)
+                        .foregroundColor(.red)
+                        .font(.caption)
+                    
+                    Spacer()
+                }
+            }
         }
-        .padding(4)
-        .cornerRadius(8.0)
-        .overlay(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(borderColor, lineWidth: 1)
-        )
-        .padding(.horizontal, 8)
     }
 }
 
 struct InputField_Previews: PreviewProvider {
+    static var errors: [ErrorField] = [
+        .init(key: "fieldName", message: "Please input valid value")
+    ]
+    
     static var previews: some View {
         InputField(
+            name: "fieldName",
             label: "Name",
+            errors: errors,
             value: .constant("Bag")
+            
         )
+        .environmentObject(ErrorData())
     }
 }

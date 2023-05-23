@@ -21,6 +21,7 @@ struct EmojiSheet: View {
 
 struct AddItemForm: View {
     @Environment(\.managedObjectContext) var managedObjectContext
+    @EnvironmentObject var errorData: ErrorData
     
     @Binding public var showSheet: Bool
     
@@ -31,12 +32,22 @@ struct AddItemForm: View {
     @State private var beaconMajor: String = ""
     @State private var beaconMinor: String = ""
     
-    @State private var errorName: String
-    @State private var errorBeaconUUIDString: String
-    @State private var errorBeaconMajor: String
-    @State private var errorBeaconMinor: String
+    @State private var errorFields: [ErrorField] = []
     
     func addItem() {
+        // reset error field once it has been resubmitted
+        errorData.errorFields = ItemViewModel.ValidateItem(
+            name: itemName,
+            logo: itemLogo,
+            beaconUUIDString: beaconUUIDString,
+            beaconMajor: beaconMajor,
+            beaconMinor: beaconMinor
+        )
+        
+        guard errorData.errorFields.count == 0 else {
+            return
+        }
+        
         let parsedBeaconMajor = Int16(beaconMajor) ?? 0
         let parsedBeaconMinor = Int16(beaconMinor) ?? 0
         
@@ -99,16 +110,26 @@ struct AddItemForm: View {
                 }
                 .padding(.bottom, 19)
                 
-                InputField(label: "Name", value: $itemName)
-                    .padding(.bottom, 16)
-                InputField(label: "UUID", value: $beaconUUIDString)
-                    .padding(.bottom, 16)
-                InputField(label: "Major", value: $beaconMajor)
-                    .keyboardType(.numberPad)
-                    .padding(.bottom, 16)
-                InputField(label: "Minor", value: $beaconMinor)
-                    .keyboardType(.numberPad)
-                    .padding(.bottom, 19)
+                InputField(
+                    name: ItemCreationName.itemName.rawValue,
+                    label: "Name",
+                    value: $itemName
+                ).padding(.bottom, 16)
+                InputField(
+                    name: ItemCreationName.beaconUUIDString.rawValue,
+                    label: "UUID",
+                    value: $beaconUUIDString
+                ).padding(.bottom, 16)
+                InputField(
+                    name: ItemCreationName.beaconMajor.rawValue,
+                    label: "Major",
+                    value: $beaconMajor
+                ).keyboardType(.numberPad).padding(.bottom, 16)
+                InputField(
+                    name: ItemCreationName.beaconMinor.rawValue,
+                    label: "Minor",
+                    value: $beaconMinor
+                ).keyboardType(.numberPad).padding(.bottom, 19)
                 
                 Button(action: addItem) {
                     ZStack {
@@ -129,5 +150,6 @@ struct AddItemForm: View {
 struct AddItemForm_Previews: PreviewProvider {
     static var previews: some View {
         AddItemForm(showSheet: .constant(true))
+            .environmentObject(ErrorData())
     }
 }

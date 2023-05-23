@@ -13,11 +13,7 @@ struct DetectionView: View {
     
     public var item: Item
     
-    @State var animatePrimaryCircle: Bool = false
     @StateObject var beaconDetector = BeaconDetector()
-    
-    let primaryCircleSize: Double = 382
-    let secondaryCircleSize: Double = 191
     
     func distanceInString(_ distance: CLProximity) -> String {
         switch distance {
@@ -54,29 +50,7 @@ struct DetectionView: View {
                 
                 Spacer()
                 
-                ZStack {
-                    Circle()
-                        .fill(.gray)
-                        .frame(
-                            width: animatePrimaryCircle
-                                ? primaryCircleSize + 10
-                                : primaryCircleSize,
-                            height: animatePrimaryCircle
-                                ? primaryCircleSize + 10
-                                : primaryCircleSize
-                        )
-                        .animation(Animation.linear(duration: 1).repeatForever(autoreverses: true), value: animatePrimaryCircle)
-                        .onAppear {
-                            animatePrimaryCircle = true
-                        }
-                    
-                    Circle()
-                        .fill(.black)
-                        .frame(
-                            width: secondaryCircleSize,
-                            height: secondaryCircleSize
-                        )
-                }
+                RadarDetector()
                 
                 Text(distanceInString(beaconDetector.lastProximity))
                     .font(.largeTitle)

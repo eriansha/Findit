@@ -12,13 +12,14 @@
 		2C1E51BA2A18B2770063F950 /* AddCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1E51B92A18B2770063F950 /* AddCard.swift */; };
 		2C1E51BC2A18B3CB0063F950 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1E51BB2A18B3CB0063F950 /* HomeView.swift */; };
 		2C35F08D2A1B058100B752DD /* MCEmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 2C35F08C2A1B058100B752DD /* MCEmojiPicker */; };
-		2C35F0932A1B125300B752DD /* EmojiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35F0922A1B125300B752DD /* EmojiPicker.swift */; };
+		2C35F0932A1B125300B752DD /* EmojiSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35F0922A1B125300B752DD /* EmojiSheet.swift */; };
 		2C35F0952A1C5C2500B752DD /* RadarDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35F0942A1C5C2500B752DD /* RadarDetector.swift */; };
 		2C35F0982A1C674900B752DD /* FinditDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C35F0962A1C674900B752DD /* FinditDataModel.xcdatamodeld */; };
 		2C35F09A2A1C688300B752DD /* FinditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35F0992A1C688300B752DD /* FinditController.swift */; };
 		2C35F09E2A1CB45900B752DD /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35F09D2A1CB45900B752DD /* ItemViewModel.swift */; };
 		2C35F0A02A1CB4A700B752DD /* ErrorField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35F09F2A1CB4A700B752DD /* ErrorField.swift */; };
 		2C35F0A22A1CC0D600B752DD /* ErrorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35F0A12A1CC0D600B752DD /* ErrorData.swift */; };
+		2C35F0A42A1CF44500B752DD /* EmojiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35F0A32A1CF44500B752DD /* EmojiPicker.swift */; };
 		2C40246E2A18D462005153B1 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40246D2A18D462005153B1 /* InputField.swift */; };
 		2C4024702A18E611005153B1 /* DetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C40246F2A18E611005153B1 /* DetectionView.swift */; };
 		2C47C5B42A19F53F00515F73 /* BeaconDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C47C5B32A19F53F00515F73 /* BeaconDetector.swift */; };
@@ -34,13 +35,14 @@
 		2C1E51B72A18AFF00063F950 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		2C1E51B92A18B2770063F950 /* AddCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCard.swift; sourceTree = "<group>"; };
 		2C1E51BB2A18B3CB0063F950 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		2C35F0922A1B125300B752DD /* EmojiPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPicker.swift; sourceTree = "<group>"; };
+		2C35F0922A1B125300B752DD /* EmojiSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiSheet.swift; sourceTree = "<group>"; };
 		2C35F0942A1C5C2500B752DD /* RadarDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarDetector.swift; sourceTree = "<group>"; };
 		2C35F0972A1C674900B752DD /* FinditDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FinditDataModel.xcdatamodel; sourceTree = "<group>"; };
 		2C35F0992A1C688300B752DD /* FinditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinditController.swift; sourceTree = "<group>"; };
 		2C35F09D2A1CB45900B752DD /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		2C35F09F2A1CB4A700B752DD /* ErrorField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorField.swift; sourceTree = "<group>"; };
 		2C35F0A12A1CC0D600B752DD /* ErrorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorData.swift; sourceTree = "<group>"; };
+		2C35F0A32A1CF44500B752DD /* EmojiPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPicker.swift; sourceTree = "<group>"; };
 		2C40246D2A18D462005153B1 /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		2C40246F2A18E611005153B1 /* DetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionView.swift; sourceTree = "<group>"; };
 		2C47C5B32A19F53F00515F73 /* BeaconDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconDetector.swift; sourceTree = "<group>"; };
@@ -136,8 +138,9 @@
 				2C1E51B92A18B2770063F950 /* AddCard.swift */,
 				2C40246D2A18D462005153B1 /* InputField.swift */,
 				2CDDDE202A1AFEFB00E04B04 /* AddItemForm.swift */,
-				2C35F0922A1B125300B752DD /* EmojiPicker.swift */,
+				2C35F0922A1B125300B752DD /* EmojiSheet.swift */,
 				2C35F0942A1C5C2500B752DD /* RadarDetector.swift */,
+				2C35F0A32A1CF44500B752DD /* EmojiPicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -266,10 +269,11 @@
 				2C1E51BC2A18B3CB0063F950 /* HomeView.swift in Sources */,
 				2C35F09A2A1C688300B752DD /* FinditController.swift in Sources */,
 				2C35F0982A1C674900B752DD /* FinditDataModel.xcdatamodeld in Sources */,
+				2C35F0A42A1CF44500B752DD /* EmojiPicker.swift in Sources */,
 				2CDDDE212A1AFEFB00E04B04 /* AddItemForm.swift in Sources */,
 				2C4024702A18E611005153B1 /* DetectionView.swift in Sources */,
 				2C35F0952A1C5C2500B752DD /* RadarDetector.swift in Sources */,
-				2C35F0932A1B125300B752DD /* EmojiPicker.swift in Sources */,
+				2C35F0932A1B125300B752DD /* EmojiSheet.swift in Sources */,
 				2C35F09E2A1CB45900B752DD /* ItemViewModel.swift in Sources */,
 				2C35F0A02A1CB4A700B752DD /* ErrorField.swift in Sources */,
 				2C1E51BA2A18B2770063F950 /* AddCard.swift in Sources */,

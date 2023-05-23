@@ -2,94 +2,73 @@
 //  EmojiPicker.swift
 //  Findit
 //
-//  Created by Ivan on 22/05/23.
+//  Created by Ivan on 23/05/23.
 //
 
 import SwiftUI
 
 struct EmojiPicker: View {
-    @Binding public var emoji: String
-    @Binding public var isPresented: Bool
+    @EnvironmentObject var errorData: ErrorData
     
-    var emojiSequences = [
-        // 0x1F601...0x1F64F,
-        0x1F380...0x1F393,
-        0x1F50A...0x1F514,
-        0x1F516...0x1F52B,
-        0x1F4B8...0x1F4EB,
-        0x1FA70...0x1FA73,
-        0x1F699...0x1F69A,
-        0x1F6C1...0x1F6D2
-    ]
+    public var name: String = ""
+    @Binding var emoji: String
     
-    func pickEmoji(_ selectedEmoji: Int) {
-        if (UnicodeScalar(selectedEmoji)?.properties.isEmoji)! {
-            if let unicodeScalar = UnicodeScalar(selectedEmoji) {
-                let emojiChar = Character(unicodeScalar)
-                let emojiString = String(emojiChar)
-                emoji = emojiString
-            } else {
-                print("Cannot parse selected emoji Int16 into Unicode")
-            }
-        } else {
-            emoji = ""
-        }
-        
-        isPresented.toggle()
-    }
-    
-    func getEmojiList() -> [[Int]] {
-        var emojis: [[Int]] = []
-        
-        for seq in emojiSequences {
-            for i in seq {
-                var temp: [Int] = []
-                for j in i...i {
-                    temp.append(j)
-                }
-                
-                emojis.append(temp)
-            }
-        }
-        
-        return emojis
-    }
-    
-    private let adaptiveColums = [
-        GridItem(.adaptive(minimum: 70))
-    ]
+    @State private var isPresented: Bool = false
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            LazyVGrid(columns: adaptiveColums, spacing: 16) {
-                ForEach(getEmojiList(), id: \.self) { row in
-                    HStack(spacing: 25) {
-                        ForEach(row, id: \.self) { emoji in
-                            Button(action: {
-                                pickEmoji(emoji)
-                            }) {
-                                if (UnicodeScalar(emoji)?.properties.isEmoji)! {
-                                    Text(String(UnicodeScalar(emoji)!))
-                                        .font(Theme.FontSize.large)
-                                } else {
-                                    Text("")
-                                }
-                            }
+        VStack {
+            ZStack {
+                Circle()
+                    .fill(Theme.Colors.gray500)
+                    .frame(width: 150, height: 150)
+                
+                Button {
+                    isPresented.toggle()
+                } label: {
+                    VStack {
+                        if emoji.isEmpty {
+                            Image(systemName: "face.dashed")
+                                .foregroundColor(.gray)
+                                .font(Theme.FontSize.large)
+                                .padding(.bottom, 1)
+                            Text("Select Emoji")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                        } else {
+                            Text(emoji)
+                                .font(Theme.FontSize.xlarage)
                         }
                     }
+                }.sheet(isPresented: $isPresented) {
+                    EmojiSheet(emoji: $emoji, isPresented: $isPresented)
+                        .padding()
+                        .presentationDetents([.height(400), .medium, .large])
+                        .presentationDragIndicator(.automatic)
+                        .padding(.top, 32)
+                        .edgesIgnoringSafeArea(.bottom)
+                    //.frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
-            .padding(.top)
+            
+            if let error = errorData.errorFields.first(where: { $0.key == name })  {
+                Text(error.message)
+                    .foregroundColor(.red)
+                    .font(.caption)
+                 
+            }
         }
-        .ignoresSafeArea(.all)
+        .padding(.bottom, 19)
     }
 }
 
 struct EmojiPicker_Previews: PreviewProvider {
     static var previews: some View {
-        EmojiPicker(
-            emoji: .constant("🎒"),
-            isPresented: .constant(true)
-        )
+        VStack {
+            EmojiPicker(name: "itemLogo", emoji: .constant(""))
+                .environmentObject(ErrorData())
+            
+            EmojiPicker(name: "itemLogo", emoji: .constant("🎒"))
+                .environmentObject(ErrorData())
+        }
     }
 }

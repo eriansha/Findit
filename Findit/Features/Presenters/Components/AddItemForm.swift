@@ -7,25 +7,12 @@
 
 import SwiftUI
 
-struct EmojiSheet: View {
-    @Binding var emoji: String
-    @Binding var isPresented: Bool
-    
-    var body: some View {
-        EmojiPicker(emoji: $emoji, isPresented: $isPresented)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding()
-            .edgesIgnoringSafeArea(.bottom)
-    }
-}
-
 struct AddItemForm: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @EnvironmentObject var errorData: ErrorData
     
     @Binding public var showSheet: Bool
     
-    @State private var isPresented: Bool = false
     @State private var itemLogo: String = ""
     @State private var itemName: String = ""
     @State private var beaconUUIDString: String = ""
@@ -76,39 +63,10 @@ struct AddItemForm: View {
             .padding()
             
             ScrollView {
-                ZStack {
-                    Circle()
-                        .fill(Theme.Colors.gray500)
-                        .frame(width: 150, height: 150)
-                    
-                    Button {
-                        isPresented.toggle()
-                    } label: {
-                        VStack {
-                            if itemLogo.isEmpty {
-                                Image(systemName: "face.dashed")
-                                    .foregroundColor(.gray)
-                                    .font(Theme.FontSize.large)
-                                    .padding(.bottom, 1)
-                                Text("Select Emoji")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                            } else {
-                                Text(itemLogo)
-                                    .font(Theme.FontSize.xlarage)
-                            }
-                        }
-                    }.sheet(isPresented: $isPresented) {
-                        EmojiSheet(
-                            emoji: $itemLogo,
-                            isPresented: $isPresented
-                        )
-                            .presentationDetents([.height(400), .medium, .large])
-                            .presentationDragIndicator(.automatic)
-                            .padding(.top, 32)
-                    }
-                }
-                .padding(.bottom, 19)
+                EmojiPicker(
+                    name: ItemCreationName.itemLogo.rawValue,
+                    emoji: $itemLogo
+                )
                 
                 InputField(
                     name: ItemCreationName.itemName.rawValue,
@@ -117,17 +75,17 @@ struct AddItemForm: View {
                 ).padding(.bottom, 16)
                 InputField(
                     name: ItemCreationName.beaconUUIDString.rawValue,
-                    label: "UUID",
+                    label: "Beacon UUID",
                     value: $beaconUUIDString
                 ).padding(.bottom, 16)
                 InputField(
                     name: ItemCreationName.beaconMajor.rawValue,
-                    label: "Major",
+                    label: "Beacon Major",
                     value: $beaconMajor
                 ).keyboardType(.numberPad).padding(.bottom, 16)
                 InputField(
                     name: ItemCreationName.beaconMinor.rawValue,
-                    label: "Minor",
+                    label: "Beacon Minor",
                     value: $beaconMinor
                 ).keyboardType(.numberPad).padding(.bottom, 19)
                 

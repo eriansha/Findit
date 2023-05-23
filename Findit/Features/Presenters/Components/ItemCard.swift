@@ -8,10 +8,19 @@
 import SwiftUI
 
 struct ItemCard: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
     public var item: Item
     
     @State private var showOptions: Bool = false
     @State private var navigateToDetecionView: Bool = false
+    
+    func deleteItem(item: Item) {
+        FinditController().delete(
+            item: item,
+            context: managedObjectContext
+        )
+    }
     
     var body: some View {
         VStack {
@@ -48,7 +57,7 @@ struct ItemCard: View {
                     NavigationLink("Find Item", value: item)
                     
                     Button("Delete item", role: .destructive) {
-                        print("Delete item")
+                        deleteItem(item: item)
                     }
             }
         }

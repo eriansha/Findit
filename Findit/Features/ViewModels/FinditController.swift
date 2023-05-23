@@ -58,6 +58,16 @@ class FinditController: ObservableObject {
         
         save(context: context)
     }
+
+    func delete(item: Item, context: NSManagedObjectContext) {
+         context.delete(item)
+         do {
+             try context.save()
+         } catch {
+             persistentContainer.viewContext.rollback()
+             print("Failed to save context: \(error)")
+         }
+     }
 }
 
 extension FinditController {

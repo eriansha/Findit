@@ -50,7 +50,6 @@ struct EmojiPicker: View {
                         .presentationDragIndicator(.automatic)
                         .padding(.top, 32)
                         .edgesIgnoringSafeArea(.bottom)
-                    //.frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 
                 if !emoji.isEmpty {

@@ -13,7 +13,17 @@ struct DetectionView: View {
     
     public var item: Item
     
-    @StateObject var beaconDetector = BeaconDetector()
+    @StateObject var beaconDetector: BeaconDetector
+    
+    init(item: Item) {
+        self.item = item
+
+        _beaconDetector = StateObject.init(wrappedValue: BeaconDetector(
+            beaconUUID: item.beaconUUID!,
+            beaconMajor: UInt16(item.beaconMajor),
+            beaconMinor: UInt16(item.beaconMinor)
+        ))
+    }
     
     func distanceInString(_ distance: CLProximity) -> String {
         switch distance {

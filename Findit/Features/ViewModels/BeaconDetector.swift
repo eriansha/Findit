@@ -17,14 +17,17 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
     // central place to manage your app’s location-related behaviors.
     var locationManager: CLLocationManager?
     
-    // hardcoded UUID for debug purpose
-    private var beaconUUID = "cb10023f-a318-3394-4199-a8730c7c1aec"
-    private var beaconMajor: UInt16 = 222
-    private var beaconMinor: UInt16 = 155
+    private let beaconUUID: UUID
+    private let beaconMajor: UInt16
+    private let beaconMinor: UInt16
     
     private var beaconConstraint: CLBeaconIdentityConstraint?
     
-    override init() {
+    init(beaconUUID: UUID, beaconMajor: UInt16, beaconMinor: UInt16) {
+        self.beaconUUID = beaconUUID
+        self.beaconMajor = beaconMajor
+        self.beaconMinor = beaconMinor
+        
         super.init()
         
         locationManager = CLLocationManager()
@@ -61,19 +64,6 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
     
-//    func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
-//        let beaconRegion = region as? CLBeaconRegion
-//        if state == .inside {
-//            print("inside")
-//            // Start ranging when inside a region.
-//            locationManager?.startRangingBeacons(satisfying: beaconRegion!.beaconIdentityConstraint)
-//        } else {
-//            print("outside")
-//            // Stop ranging when not inside a region.
-//            locationManager?.stopRangingBeacons(satisfying: beaconRegion!.beaconIdentityConstraint)
-//        }
-//    }
-    
     /** A callback to tell whether the beacon is in range */
     func locationManager(_ manager: CLLocationManager, didRange beacons: [CLBeacon], satisfying beaconConstraint: CLBeaconIdentityConstraint) {
         print("total beacons \(beacons.count)")
@@ -94,14 +84,13 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
             A constraint specifies beacon identity characteristics.
             Before detecting Beacon, we must specify identities values that programmed in the beacon hardware (e.g proximity UUID, major, minor)
          */
-        let uuid = UUID(uuidString: beaconUUID)!
         let constraint = CLBeaconIdentityConstraint(
-            uuid: uuid,
+            uuid: beaconUUID,
             major: beaconMajor,
             minor: beaconMinor
         )
         beaconConstraint = constraint
-        let beaconRegion = CLBeaconRegion(beaconIdentityConstraint: constraint, identifier: uuid.uuidString)
+        let beaconRegion = CLBeaconRegion(beaconIdentityConstraint: constraint, identifier: beaconUUID.uuidString)
         
         // To detect when a beacon is in range
         locationManager?.startMonitoring(for: beaconRegion)

@@ -41,10 +41,17 @@ struct DetectionView: View {
             VStack(alignment: .leading) {
                 Text("finding")
                     .foregroundColor(.white)
-                Text(item.name)
-                    .foregroundColor(.white)
-                    .font(.largeTitle)
-                    .bold()
+                if let name = item.name {
+                    Text(name)
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                        .bold()
+                } else {
+                    Text("Item")
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                        .bold()
+                }
             }
             .position(x: 60, y: 70)
             
@@ -52,8 +59,7 @@ struct DetectionView: View {
                 
                 Spacer()
                 
-                RadarDetector()
-                    .padding(.top, 50)
+                RadarDetector().padding(.top, 50)
                 
                 Text(distanceInString(beaconDetector.lastProximity))
                     .font(.largeTitle)
@@ -80,16 +86,7 @@ struct DetectionView: View {
 }
 
 struct DetectionView_Previews: PreviewProvider {
-    static var dummyItem: Item = Item(
-        id: UUID(),
-        logo: "🎒",
-        name: "Bag",
-        beaconUUID: UUID(),
-        beaconMajor: 10,
-        beaconMinor: 20
-    )
-    
     static var previews: some View {
-        DetectionView(item: dummyItem)
+        DetectionView(item: FinditController.example)
     }
 }

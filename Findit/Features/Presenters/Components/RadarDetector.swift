@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RadarDetector: View {
+    
     @State private var animatedPrimaryCircle: Bool = false
     
     let primaryCircleSize: Double = 270
@@ -21,10 +22,10 @@ struct RadarDetector: View {
                 .frame(
                     width: animatedPrimaryCircle
                     ? primaryCircleSize + 90
-                        : primaryCircleSize,
+                    : primaryCircleSize,
                     height: animatedPrimaryCircle
-                        ? primaryCircleSize + 90
-                        : primaryCircleSize
+                    ? primaryCircleSize + 90
+                    : primaryCircleSize
                 )
                 .animation(Animation.linear(duration: 1).repeatForever(autoreverses: true), value: animatedPrimaryCircle)
                 .onAppear {

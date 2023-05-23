@@ -24,10 +24,21 @@ struct ItemCard: View {
                         .frame(width: 171, height: 171)
                     
                     VStack {
-                        Text(item.logo)
-                            .font(Theme.FontSize.xxlarge)
-                        Text(item.name)
-                            .foregroundColor(.black)
+                        if let logo = item.logo {
+                            Text(logo)
+                                .font(Theme.FontSize.xxlarge)
+                        } else {
+                            Text("📦")
+                                .font(Theme.FontSize.xxlarge)
+                        }
+                        
+                        if let name = item.name {
+                            Text(name)
+                                .foregroundColor(.black)
+                        } else {
+                            Text("-")
+                                .foregroundColor(.black)
+                        }
                     }
                 }
             }.confirmationDialog(
@@ -48,16 +59,7 @@ struct ItemCard: View {
 }
 
 struct ItemCard_Previews: PreviewProvider {
-    static var dummyItem: Item = Item(
-        id: UUID(),
-        logo: "🎒",
-        name: "Bag",
-        beaconUUID: UUID(),
-        beaconMajor: 10,
-        beaconMinor: 20
-    )
-    
     static var previews: some View {
-        ItemCard(item: dummyItem)
+        ItemCard(item: FinditController.example)
     }
 }

@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Item: Identifiable, Hashable {
-    let id: UUID
-    var logo: String
-    var name: String
-    var beaconUUID: UUID
-    var beaconMajor: Int
-    var beaconMinor: Int
-}
+//struct Item: Identifiable, Hashable {
+//    let id: UUID
+//    var logo: String
+//    var name: String
+//    var beaconUUID: UUID
+//    var beaconMajor: Int
+//    var beaconMinor: Int
+//}

@@ -8,25 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
-    
-    private let items: [Item] = [
-        Item(
-            id: UUID(),
-            logo: "🎒",
-            name: "Bag",
-            beaconUUID: UUID(),
-            beaconMajor: 10,
-            beaconMinor: 20
-        ),
-        Item(
-            id: UUID(),
-            logo: "🔑",
-            name: "Key",
-            beaconUUID: UUID(),
-            beaconMajor: 10,
-            beaconMinor: 20
-        )
-    ]
+    @FetchRequest(
+        entity: Item.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Item.createdAt, ascending: false)
+        ]
+    ) var items: FetchedResults<Item>
     
     private let adaptiveColums = [
         GridItem(.adaptive(minimum: 171))

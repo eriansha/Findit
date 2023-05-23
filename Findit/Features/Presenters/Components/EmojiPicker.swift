@@ -15,6 +15,10 @@ struct EmojiPicker: View {
     
     @State private var isPresented: Bool = false
     
+    func removeEmoji() {
+        emoji = ""
+    }
+    
     var body: some View {
         VStack {
             ZStack {
@@ -48,13 +52,20 @@ struct EmojiPicker: View {
                         .edgesIgnoringSafeArea(.bottom)
                     //.frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
+                
+                if !emoji.isEmpty {
+                    Button(action: removeEmoji) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.gray)
+                            .font(.body)
+                    }.offset(x: 37, y: -37)
+                }
             }
             
             if let error = errorData.errorFields.first(where: { $0.key == name })  {
                 Text(error.message)
                     .foregroundColor(.red)
                     .font(.caption)
-                 
             }
         }
         .padding(.bottom, 19)
@@ -67,7 +78,7 @@ struct EmojiPicker_Previews: PreviewProvider {
             EmojiPicker(name: "itemLogo", emoji: .constant(""))
                 .environmentObject(ErrorData())
             
-            EmojiPicker(name: "itemLogo", emoji: .constant("🎒"))
+            EmojiPicker(name: "itemLogo", emoji: .constant("🎆"))
                 .environmentObject(ErrorData())
         }
     }

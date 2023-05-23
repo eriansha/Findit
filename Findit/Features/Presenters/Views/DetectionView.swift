@@ -35,28 +35,33 @@ struct DetectionView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(.white)
+                .fill(.blue)
                 .ignoresSafeArea(.all)
             
             VStack(alignment: .leading) {
                 Text("finding")
-                    .foregroundColor(.gray)
+                    .foregroundColor(.white)
                 Text(item.name)
+                    .foregroundColor(.white)
                     .font(.largeTitle)
                     .bold()
-            }.position(x: 40, y: 40)
+            }
+            .position(x: 60, y: 70)
             
             VStack {
                 
                 Spacer()
                 
                 RadarDetector()
+                    .padding(.top, 50)
                 
                 Text(distanceInString(beaconDetector.lastProximity))
                     .font(.largeTitle)
+                    .foregroundColor(.white)
                     .bold()
                 
                 Text(formatDistance(beaconDetector.lastDistance))
+                    .foregroundColor(.white)
                     .font(.title)
                 
                 Spacer()
@@ -66,7 +71,7 @@ struct DetectionView: View {
                 }) {
                     Image(systemName: "xmark.circle.fill")
                         .font(Theme.FontSize.large)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.white)
                         .padding(.vertical, 2)
                 }
             }

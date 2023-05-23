@@ -16,7 +16,8 @@ struct RadarDetector: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(.gray)
+                .fill(.white)
+                .opacity(0.4)
                 .frame(
                     width: animatedPrimaryCircle
                         ? primaryCircleSize + 10
@@ -31,7 +32,7 @@ struct RadarDetector: View {
                 }
             
             Circle()
-                .fill(.black)
+                .fill(.white)
                 .frame(
                     width: secondaryCircleSize,
                     height: secondaryCircleSize
@@ -44,6 +45,12 @@ struct RadarDetector: View {
 
 struct RadarDetector_Previews: PreviewProvider {
     static var previews: some View {
-        RadarDetector()
+        ZStack {
+            Rectangle()
+                .fill(.blue)
+                .ignoresSafeArea(.all)
+            
+            RadarDetector()
+        }
     }
 }

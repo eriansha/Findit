@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct RadarDetector: View {
-    
+    public var proximity: CLProximity = .unknown
+    @State private var timingPrimaryCircle: Double = 1
     @State private var animatedPrimaryCircle: Bool = false
     
     let primaryCircleSize: Double = 270
@@ -21,13 +23,13 @@ struct RadarDetector: View {
                 .opacity(0.4)
                 .frame(
                     width: animatedPrimaryCircle
-                    ? primaryCircleSize + 90
-                    : primaryCircleSize,
+                        ? primaryCircleSize + 90
+                        : primaryCircleSize,
                     height: animatedPrimaryCircle
-                    ? primaryCircleSize + 90
-                    : primaryCircleSize
+                        ? primaryCircleSize + 90
+                        : primaryCircleSize
                 )
-                .animation(Animation.linear(duration: 1).repeatForever(autoreverses: true), value: animatedPrimaryCircle)
+                .animation(Animation.linear(duration: timingPrimaryCircle).repeatForever(autoreverses: true), value: animatedPrimaryCircle)
                 .onAppear {
                     animatedPrimaryCircle = true
                 }

@@ -24,24 +24,7 @@ struct DetectionView: View {
             beaconMinor: UInt16(item.beaconMinor)
         ))
     }
-    
-    func distanceInString(_ distance: CLProximity) -> String {
-        switch distance {
-        case .near: return "Near"
-        case .far: return "Far"
-        case .immediate: return "Immediate"
-        default: return "Unknown"
-        }
-    }
-    
-    func formatDistance(_ value: Double) -> String {
-        if value > 0 {
-            return "\(String(format: "%.1f", value)) m"
-        } else {
-            return "-"
-        }
-    }
-    
+
     var body: some View {
         ZStack {
             Rectangle()
@@ -69,14 +52,14 @@ struct DetectionView: View {
                 
                 Spacer()
                 
-                RadarDetector().padding(.top, 50)
+                RadarDetector(proximity: beaconDetector.lastProximity).padding(.top, 50)
                 
-                Text(distanceInString(beaconDetector.lastProximity))
+                Text(ItemViewModel.proximityInString(beaconDetector.lastProximity))
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .bold()
                 
-                Text(formatDistance(beaconDetector.lastDistance))
+                Text(ItemViewModel.formatDistance(beaconDetector.lastDistance))
                     .foregroundColor(.white)
                     .font(.title)
                 

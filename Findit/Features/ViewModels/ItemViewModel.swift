@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 enum ItemCreationName: String {
     case itemName
@@ -16,6 +17,49 @@ enum ItemCreationName: String {
 }
 
 struct ItemViewModel {
+    // Humanize proximity
+    static func proximityInString(_ distance: CLProximity) -> String {
+        switch distance {
+        case .near: return "Near"
+        case .far: return "Far"
+        case .immediate: return "Immediate"
+        default: return "Unknown"
+        }
+    }
+    
+    /**
+        Formating distance
+        - rounded to one digit after comma
+        - adding Meter unit
+     */
+    static func formatDistance(_ value: Double) -> String {
+        if value > 0 {
+            return "\(String(format: "%.1f", value)) m"
+        } else {
+            return "-"
+        }
+    }
+    
+    /** Calculate radar animation time */
+    static func calculcateAnimationTime(lastProximity: CLProximity) -> Double {
+        switch lastProximity {
+        case .unknown:
+            return 2
+        case .immediate:
+            return 0.25
+        case .near:
+            return 0.5
+        case .far:
+            return 1
+        default:
+            return 2
+        }
+    }
+}
+
+/** Validation extension */
+extension ItemViewModel {
+    /** Validate Item during creation*/
     static func ValidateItem(
         name: String,
         logo: String,
